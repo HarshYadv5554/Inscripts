@@ -8,7 +8,7 @@ interface ViewTabsProps {
   onAddTab?: () => void;
 }
 
-export function ViewTabs({ tabs, onTabChange }: ViewTabsProps) {
+export function ViewTabs({ tabs, onTabChange, onAddTab }: ViewTabsProps) {
   return (
     <div className="flex items-center gap-6 border-t border-surface-tertiary bg-white px-8 py-1">
       <div className="flex items-start">
