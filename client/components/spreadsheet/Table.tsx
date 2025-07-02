@@ -1,6 +1,15 @@
-import { ChevronDown, Plus, Link, RefreshCw, ArrowUpDown } from "lucide-react";
+import {
+  ChevronDown,
+  Plus,
+  Link,
+  RefreshCw,
+  ArrowUpDown,
+  GripVertical,
+} from "lucide-react";
 import { SpreadsheetRow } from "@/lib/spreadsheet-types";
 import { StatusBadge } from "./StatusBadge";
+import { useKeyboardNavigation } from "@/hooks/use-keyboard-navigation";
+import { useColumnResize } from "@/hooks/use-column-resize";
 import { cn } from "@/lib/utils";
 
 interface TableProps {
