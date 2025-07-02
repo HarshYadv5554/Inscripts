@@ -1,10 +1,16 @@
-import { ChevronDown, Plus, Link, RefreshCw } from "lucide-react";
+import { ChevronDown, Plus, Link, RefreshCw, ArrowUpDown } from "lucide-react";
 import { SpreadsheetRow } from "@/lib/spreadsheet-types";
 import { StatusBadge } from "./StatusBadge";
 import { cn } from "@/lib/utils";
 
 interface TableProps {
   data: SpreadsheetRow[];
+  onSort?: (key: keyof SpreadsheetRow) => void;
+  sortConfig?: {
+    key: keyof SpreadsheetRow;
+    direction: "asc" | "desc";
+  } | null;
+  hiddenColumns?: string[];
 }
 
 export function Table({ data }: TableProps) {
