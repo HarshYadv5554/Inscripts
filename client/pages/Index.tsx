@@ -129,7 +129,11 @@ export default function Index() {
           hiddenColumns={hiddenColumns}
         />
       </div>
-      <ViewTabs tabs={updatedTabs} onTabChange={handleTabChange} />
+      <ViewTabs
+        tabs={updatedTabs}
+        onTabChange={handleTabChange}
+        onAddTab={() => setShowAddTab(true)}
+      />
 
       {/* Modals */}
       <HideFieldsModal
