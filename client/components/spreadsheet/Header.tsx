@@ -46,9 +46,13 @@ export function Header() {
         {/* Search */}
         <div className="flex items-center gap-2 rounded-md bg-surface-secondary px-3 py-3">
           <Search className="h-4 w-4 text-content-disabled" />
-          <span className="text-xs text-content-tertiary">
-            Search within sheet
-          </span>
+          <input
+            type="text"
+            placeholder="Search within sheet"
+            value={searchQuery}
+            onChange={(e) => onSearchChange(e.target.value)}
+            className="bg-transparent text-xs text-content-tertiary placeholder:text-content-tertiary focus:outline-none"
+          />
         </div>
 
         {/* Notifications */}
