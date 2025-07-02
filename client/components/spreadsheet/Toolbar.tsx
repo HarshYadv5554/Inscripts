@@ -10,7 +10,27 @@ import {
   ArrowDown,
 } from "lucide-react";
 
-export function Toolbar() {
+interface ToolbarProps {
+  onHideFields: () => void;
+  onSort: () => void;
+  onFilter: () => void;
+  onCellView: () => void;
+  onImport: () => void;
+  onExport: () => void;
+  onShare: () => void;
+  onNewAction: () => void;
+}
+
+export function Toolbar({
+  onHideFields,
+  onSort,
+  onFilter,
+  onCellView,
+  onImport,
+  onExport,
+  onShare,
+  onNewAction,
+}: ToolbarProps) {
   return (
     <div className="flex items-center gap-2 border-b border-surface-tertiary bg-white px-2 py-1.5">
       {/* Tool bar button */}
