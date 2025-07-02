@@ -61,17 +61,20 @@ export function Table({
     children,
     sortKey,
     className = "",
+    columnId,
   }: {
     children: React.ReactNode;
     sortKey?: keyof SpreadsheetRow;
     className?: string;
+    columnId?: string;
   }) => (
     <div
       className={cn(
-        "flex h-8 items-center gap-1 bg-surface-tertiary px-2 cursor-pointer hover:bg-gray-200",
+        "flex h-8 items-center gap-1 bg-surface-tertiary px-2 cursor-pointer hover:bg-gray-200 relative group",
         className,
       )}
       onClick={() => sortKey && onSort?.(sortKey)}
+      style={{ width: columnId ? columnWidths[columnId] : undefined }}
     >
       {children}
       {sortKey && (
@@ -84,6 +87,44 @@ export function Table({
           )}
         </div>
       )}
+      {columnId && (
+        <div
+          className="absolute right-0 top-0 h-full w-1 cursor-col-resize bg-transparent hover:bg-brand-600 group-hover:opacity-100 opacity-0"
+          onMouseDown={(e) => handleMouseDown(columnId, e)}
+        >
+          <GripVertical className="h-3 w-3 text-gray-400 absolute right-0 top-1/2 transform -translate-y-1/2" />
+        </div>
+      )}
+    </div>
+  );
+
+  const DataCell = ({
+    children,
+    rowIndex,
+    colIndex,
+    columnId,
+    className = "",
+  }: {
+    children: React.ReactNode;
+    rowIndex: number;
+    colIndex: number;
+    columnId?: string;
+    className?: string;
+  }) => (
+    <div
+      className={cn(
+        "flex h-8 items-center px-2 bg-white cursor-cell border-l border-transparent",
+        isNavigationActive &&
+          selectedCell.row === rowIndex &&
+          selectedCell.col === colIndex &&
+          "border-l-2 border-l-brand-600 bg-brand-50",
+        className,
+      )}
+      style={{ width: columnId ? columnWidths[columnId] : undefined }}
+      onClick={() => activateNavigation(rowIndex, colIndex)}
+      tabIndex={0}
+    >
+      {children}
     </div>
   );
 
