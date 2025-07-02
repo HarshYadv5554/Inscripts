@@ -44,19 +44,31 @@ export function Toolbar({
 
       {/* Left controls */}
       <div className="flex flex-1 items-center gap-1">
-        <button className="flex items-center gap-1 rounded-md bg-white px-2 py-2 text-sm text-content-primary">
+        <button
+          onClick={onHideFields}
+          className="flex items-center gap-1 rounded-md bg-white px-2 py-2 text-sm text-content-primary hover:bg-gray-50"
+        >
           <Eye className="h-5 w-5" />
           Hide fields
         </button>
-        <button className="flex items-center gap-1 rounded-md bg-white px-2 py-2 text-sm text-content-primary">
+        <button
+          onClick={onSort}
+          className="flex items-center gap-1 rounded-md bg-white px-2 py-2 text-sm text-content-primary hover:bg-gray-50"
+        >
           <ArrowUpDown className="h-5 w-5" />
           Sort
         </button>
-        <button className="flex items-center gap-1 rounded-md bg-white px-2 py-2 text-sm text-content-primary">
+        <button
+          onClick={onFilter}
+          className="flex items-center gap-1 rounded-md bg-white px-2 py-2 text-sm text-content-primary hover:bg-gray-50"
+        >
           <Filter className="h-5 w-5" />
           Filter
         </button>
-        <button className="flex items-center gap-1 rounded-md bg-white px-2 py-2 text-sm text-content-primary">
+        <button
+          onClick={onCellView}
+          className="flex items-center gap-1 rounded-md bg-white px-2 py-2 text-sm text-content-primary hover:bg-gray-50"
+        >
           <Expand className="h-5 w-5" />
           Cell view
         </button>
