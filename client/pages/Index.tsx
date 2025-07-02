@@ -46,7 +46,20 @@ export default function Index() {
     setActiveTab(tabId);
   };
 
-  const updatedTabs = viewTabs.map((tab) => ({
+  const handleCreateAction = (newAction: Partial<SpreadsheetRow>) => {
+    setData([...data, newAction as SpreadsheetRow]);
+  };
+
+  const handleAddTab = (tabName: string) => {
+    const newTab: ViewTab = {
+      id: tabName.toLowerCase().replace(/\s+/g, "-"),
+      label: tabName,
+      isActive: false,
+    };
+    setTabs([...tabs, newTab]);
+  };
+
+  const updatedTabs = tabs.map((tab) => ({
     ...tab,
     isActive: tab.id === activeTab,
   }));
