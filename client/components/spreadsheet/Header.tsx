@@ -6,7 +6,12 @@ import {
   MoreVertical,
 } from "lucide-react";
 
-export function Header() {
+interface HeaderProps {
+  searchQuery: string;
+  onSearchChange: (query: string) => void;
+}
+
+export function Header({ searchQuery, onSearchChange }: HeaderProps) {
   return (
     <div className="flex items-center justify-between border-b border-surface-tertiary bg-white px-4 py-2">
       {/* Left side - Breadcrumbs and Panel icon */}
