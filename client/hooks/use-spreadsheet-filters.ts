@@ -30,8 +30,23 @@ export function useSpreadsheetFilters(data: SpreadsheetRow[]) {
       result = result.filter((row) => statusFilter.includes(row.status));
     }
 
-    // Apply sorting
-    if (sortConfig) {
+    // Apply sorting (multi-sort takes precedence)
+    if (multiSortConfig.length > 0) {
+      result.sort((a, b) => {
+        for (const sort of multiSortConfig) {
+          const aValue = a[sort.key];
+          const bValue = b[sort.key];
+
+          if (aValue < bValue) {
+            return sort.direction === "asc" ? -1 : 1;
+          }
+          if (aValue > bValue) {
+            return sort.direction === "asc" ? 1 : -1;
+          }
+        }
+        return 0;
+      });
+    } else if (sortConfig) {
       result.sort((a, b) => {
         const aValue = a[sortConfig.key];
         const bValue = b[sortConfig.key];
