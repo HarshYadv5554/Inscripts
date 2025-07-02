@@ -92,11 +92,20 @@ export function useSpreadsheetFilters(data: SpreadsheetRow[]) {
     );
   };
 
+  const applyMultiSort = (
+    sortRules: Array<{ key: keyof SpreadsheetRow; direction: "asc" | "desc" }>,
+  ) => {
+    setMultiSortConfig(sortRules);
+    setSortConfig(null); // Clear single sort when multi-sort is applied
+  };
+
   return {
     searchQuery,
     setSearchQuery,
     sortConfig,
     handleSort,
+    multiSortConfig,
+    applyMultiSort,
     hiddenColumns,
     toggleColumn,
     statusFilter,
