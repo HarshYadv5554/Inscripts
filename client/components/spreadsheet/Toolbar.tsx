@@ -77,22 +77,34 @@ export function Toolbar({
       {/* Right controls */}
       <div className="flex items-center gap-2">
         <div className="flex items-center gap-2">
-          <button className="flex items-center gap-1 rounded-md border border-surface-tertiary bg-white px-2 py-2 text-sm text-content-secondary">
+          <button
+            onClick={onImport}
+            className="flex items-center gap-1 rounded-md border border-surface-tertiary bg-white px-2 py-2 text-sm text-content-secondary hover:bg-gray-50"
+          >
             <Download className="h-5 w-5" />
             Import
           </button>
-          <button className="flex items-center gap-1 rounded-md border border-surface-tertiary bg-white px-2 py-2 text-sm text-content-secondary">
+          <button
+            onClick={onExport}
+            className="flex items-center gap-1 rounded-md border border-surface-tertiary bg-white px-2 py-2 text-sm text-content-secondary hover:bg-gray-50"
+          >
             <Upload className="h-5 w-5" />
             Export
           </button>
-          <button className="flex items-center gap-1 rounded-md border border-surface-tertiary bg-white px-2 py-2 text-sm text-content-secondary">
+          <button
+            onClick={onShare}
+            className="flex items-center gap-1 rounded-md border border-surface-tertiary bg-white px-2 py-2 text-sm text-content-secondary hover:bg-gray-50"
+          >
             <Share className="h-5 w-5" />
             Share
           </button>
         </div>
 
         {/* New Action button */}
-        <button className="flex items-center gap-1 rounded-md bg-brand-600 px-6 py-2 text-sm font-medium text-white">
+        <button
+          onClick={onNewAction}
+          className="flex items-center gap-1 rounded-md bg-brand-600 px-6 py-2 text-sm font-medium text-white hover:bg-brand-700"
+        >
           <ArrowDown className="h-5 w-5" />
           New Action
         </button>
