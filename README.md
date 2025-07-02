@@ -4,7 +4,7 @@ A pixel-perfect React implementation of a spreadsheet interface with Excel/Googl
 
 ## 🚀 Live Demo
 
-[View Live Application](https://your-deployment-url.com)
+[View Live Application](https://inscriptss.netlify.app/)
 
 ## 📋 Features
 
