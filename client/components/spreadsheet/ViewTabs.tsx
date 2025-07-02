@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 interface ViewTabsProps {
   tabs: ViewTab[];
   onTabChange?: (tabId: string) => void;
+  onAddTab?: () => void;
 }
 
 export function ViewTabs({ tabs, onTabChange }: ViewTabsProps) {
