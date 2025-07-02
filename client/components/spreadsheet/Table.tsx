@@ -32,6 +32,31 @@ export function Table({
     return value.toLocaleString("en-IN");
   };
 
+  const defaultColumnWidths = {
+    rowNumber: 32,
+    jobRequest: 256,
+    submitted: 124,
+    status: 124,
+    submitter: 124,
+    url: 124,
+    assigned: 124,
+    priority: 125,
+    dueDate: 125,
+    estValue: 124,
+  };
+
+  const { columnWidths, isResizing, handleMouseDown } =
+    useColumnResize(defaultColumnWidths);
+
+  const { selectedCell, isNavigationActive, activateNavigation } =
+    useKeyboardNavigation(
+      data.length + 1, // +1 for header
+      8, // number of columns
+      (row, col) => {
+        console.log(`Selected cell: row ${row}, col ${col}`);
+      },
+    );
+
   const SortableHeader = ({
     children,
     sortKey,
