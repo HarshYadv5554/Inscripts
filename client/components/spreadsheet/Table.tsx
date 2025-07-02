@@ -23,6 +23,36 @@ export function Table({
     return value.toLocaleString("en-IN");
   };
 
+  const SortableHeader = ({
+    children,
+    sortKey,
+    className = "",
+  }: {
+    children: React.ReactNode;
+    sortKey?: keyof SpreadsheetRow;
+    className?: string;
+  }) => (
+    <div
+      className={cn(
+        "flex h-8 items-center gap-1 bg-surface-tertiary px-2 cursor-pointer hover:bg-gray-200",
+        className,
+      )}
+      onClick={() => sortKey && onSort?.(sortKey)}
+    >
+      {children}
+      {sortKey && (
+        <div className="flex items-center">
+          <ArrowUpDown className="h-3 w-3 text-content-disabled" />
+          {sortConfig?.key === sortKey && (
+            <span className="ml-1 text-xs text-content-primary">
+              {sortConfig.direction === "asc" ? "↑" : "↓"}
+            </span>
+          )}
+        </div>
+      )}
+    </div>
+  );
+
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case "High":
