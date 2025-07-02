@@ -152,6 +152,24 @@ export default function Index() {
       />
 
       <ShareModal isOpen={showShare} onClose={() => setShowShare(false)} />
+
+      <NewActionModal
+        isOpen={showNewAction}
+        onClose={() => setShowNewAction(false)}
+        onCreateAction={handleCreateAction}
+      />
+
+      <SortModal
+        isOpen={showAdvancedSort}
+        onClose={() => setShowAdvancedSort(false)}
+        onApplySort={applyMultiSort}
+      />
+
+      <AddTabModal
+        isOpen={showAddTab}
+        onClose={() => setShowAddTab(false)}
+        onAddTab={handleAddTab}
+      />
     </div>
   );
 }
