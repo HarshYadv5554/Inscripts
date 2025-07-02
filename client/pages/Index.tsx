@@ -1,62 +1,32 @@
-import { DemoResponse } from "@shared/api";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Header } from "@/components/spreadsheet/Header";
+import { Toolbar } from "@/components/spreadsheet/Toolbar";
+import { Table } from "@/components/spreadsheet/Table";
+import { ViewTabs } from "@/components/spreadsheet/ViewTabs";
+import { mockData, viewTabs } from "@/lib/spreadsheet-data";
 
 export default function Index() {
-  const [exampleFromServer, setExampleFromServer] = useState("");
-  // Fetch users on component mount
-  useEffect(() => {
-    fetchDemo();
-  }, []);
+  const [activeTab, setActiveTab] = useState("all");
 
-  // Example of how to fetch data from the server (if needed)
-  const fetchDemo = async () => {
-    try {
-      const response = await fetch("/api/demo");
-      const data = (await response.json()) as DemoResponse;
-      setExampleFromServer(data.message);
-    } catch (error) {
-      console.error("Error fetching hello:", error);
-    }
+  const handleTabChange = (tabId: string) => {
+    setActiveTab(tabId);
+    // Here you would filter the data based on the selected tab
+    // For now, we'll just update the active state
   };
 
+  const updatedTabs = viewTabs.map((tab) => ({
+    ...tab,
+    isActive: tab.id === activeTab,
+  }));
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: FUSION_GENERATION_APP_PLACEHOLDER replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
-          >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
-          </svg>
-          Generating your app...
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
-        </p>
-        <p className="mt-4 hidden max-w-md">{exampleFromServer}</p>
+    <div className="flex h-screen w-full flex-col bg-platinum-50 font-sans">
+      <Header />
+      <Toolbar />
+      <div className="flex-1 overflow-hidden">
+        <Table data={mockData} />
       </div>
+      <ViewTabs tabs={updatedTabs} onTabChange={handleTabChange} />
     </div>
   );
 }
