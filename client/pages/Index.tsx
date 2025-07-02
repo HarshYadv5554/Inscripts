@@ -8,14 +8,25 @@ import {
   FilterModal,
   ShareModal,
 } from "@/components/spreadsheet/Modals";
+import {
+  NewActionModal,
+  SortModal,
+  AddTabModal,
+} from "@/components/spreadsheet/ActionModals";
 import { mockData, viewTabs } from "@/lib/spreadsheet-data";
 import { useSpreadsheetFilters } from "@/hooks/use-spreadsheet-filters";
+import { SpreadsheetRow, ViewTab } from "@/lib/spreadsheet-types";
 
 export default function Index() {
   const [activeTab, setActiveTab] = useState("all");
   const [showHideFields, setShowHideFields] = useState(false);
   const [showFilter, setShowFilter] = useState(false);
   const [showShare, setShowShare] = useState(false);
+  const [showNewAction, setShowNewAction] = useState(false);
+  const [showAdvancedSort, setShowAdvancedSort] = useState(false);
+  const [showAddTab, setShowAddTab] = useState(false);
+  const [data, setData] = useState(mockData);
+  const [tabs, setTabs] = useState(viewTabs);
 
   const {
     searchQuery,
