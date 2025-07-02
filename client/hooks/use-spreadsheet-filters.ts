@@ -7,6 +7,9 @@ export function useSpreadsheetFilters(data: SpreadsheetRow[]) {
     key: keyof SpreadsheetRow;
     direction: "asc" | "desc";
   } | null>(null);
+  const [multiSortConfig, setMultiSortConfig] = useState<
+    Array<{ key: keyof SpreadsheetRow; direction: "asc" | "desc" }>
+  >([]);
   const [hiddenColumns, setHiddenColumns] = useState<string[]>([]);
   const [statusFilter, setStatusFilter] = useState<string[]>([]);
 
