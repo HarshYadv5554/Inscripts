@@ -62,7 +62,7 @@ export function useSpreadsheetFilters(data: SpreadsheetRow[]) {
     }
 
     return result;
-  }, [data, searchQuery, sortConfig, statusFilter]);
+  }, [data, searchQuery, sortConfig, multiSortConfig, statusFilter]);
 
   const handleSort = (key: keyof SpreadsheetRow) => {
     setSortConfig((current) => {
