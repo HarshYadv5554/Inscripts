@@ -113,17 +113,13 @@ export default function Index() {
       <Header searchQuery={searchQuery} onSearchChange={setSearchQuery} />
       <Toolbar
         onHideFields={() => setShowHideFields(true)}
-        onSort={() =>
-          alert(
-            "Sort by multiple columns - click on column headers to sort individual columns",
-          )
-        }
+        onSort={() => setShowAdvancedSort(true)}
         onFilter={() => setShowFilter(true)}
         onCellView={() => alert("Cell view options coming soon!")}
         onImport={() => handleFileOperation("import")}
         onExport={() => handleFileOperation("export")}
         onShare={() => setShowShare(true)}
-        onNewAction={() => alert("New action creation coming soon!")}
+        onNewAction={() => setShowNewAction(true)}
       />
       <div className="flex-1 overflow-hidden">
         <Table
