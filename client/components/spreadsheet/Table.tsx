@@ -13,7 +13,12 @@ interface TableProps {
   hiddenColumns?: string[];
 }
 
-export function Table({ data }: TableProps) {
+export function Table({
+  data,
+  onSort,
+  sortConfig,
+  hiddenColumns = [],
+}: TableProps) {
   const formatCurrency = (value: number) => {
     return value.toLocaleString("en-IN");
   };
