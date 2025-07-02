@@ -149,7 +149,7 @@ export function NewActionModal({
               onChange={(e) =>
                 setFormData({
                   ...formData,
-                  priority: e.target.value as "High" | "Medium" | "Low",
+                  priority: e.target.value as typeof formData.priority,
                 })
               }
               className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-brand-600 focus:outline-none"
