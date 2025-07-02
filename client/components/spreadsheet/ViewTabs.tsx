@@ -32,8 +32,11 @@ export function ViewTabs({ tabs, onTabChange }: ViewTabsProps) {
         ))}
 
         {/* Add tab button */}
-        <button className="flex items-center justify-center px-1 py-2">
-          <div className="flex items-center rounded bg-white p-1">
+        <button
+          onClick={() => onAddTab?.()}
+          className="flex items-center justify-center px-1 py-2 hover:bg-gray-50 rounded"
+        >
+          <div className="flex items-center rounded bg-white p-1 hover:bg-gray-100 transition-colors">
             <Plus className="h-5 w-5 text-content-tertiary" />
           </div>
         </button>
