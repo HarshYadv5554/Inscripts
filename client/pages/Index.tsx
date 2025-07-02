@@ -33,12 +33,14 @@ export default function Index() {
     setSearchQuery,
     sortConfig,
     handleSort,
+    multiSortConfig,
+    applyMultiSort,
     hiddenColumns,
     toggleColumn,
     statusFilter,
     toggleStatusFilter,
     filteredAndSortedData,
-  } = useSpreadsheetFilters(mockData);
+  } = useSpreadsheetFilters(data);
 
   const handleTabChange = (tabId: string) => {
     setActiveTab(tabId);
